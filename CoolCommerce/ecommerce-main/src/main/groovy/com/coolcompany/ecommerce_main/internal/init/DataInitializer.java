@@ -31,7 +31,7 @@ public class DataInitializer {
     private final ProductRepository productRepository;
     private final ResourceLoader resourceLoader;
 
-    private final static String[] CATEGORY_NAMES = {"Rocking Chair", "Table", "Lamp"};
+    private final static String[] CATEGORY_NAMES = {"Rocking Chair", "Lamp", "Desk"};
     private static final int ADJECTIVE_COUNT = 1915;
 
     // In the real would not be stored in the source code
@@ -58,7 +58,7 @@ public class DataInitializer {
             List<String> adjectives = getAdjectives();
 
             for(String categoryName : CATEGORY_NAMES){
-                Category category = new Category().setName(categoryName);
+                Category category = new Category().setName(categoryName+"s");
                 category = categoryRepository.save(category);
 
                 searchParameters.setTags(new String[]{categoryName});
