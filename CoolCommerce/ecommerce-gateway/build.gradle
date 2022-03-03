@@ -1,0 +1,15 @@
+plugins {
+	id 'com.coolcompany.java-application-conventions'
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+
+}
+
+dependencies {
+	implementation "com.kinotic:continuum-gateway:${continuumVersion}"
+}

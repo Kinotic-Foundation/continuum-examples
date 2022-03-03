@@ -1,0 +1,9 @@
+rootProject.name = 'CoolCommerce'
+
+includeBuild('../../continuum/continuum-cloud')
+
+rootDir.listFiles().each {
+    if (it.directory && new File(it, 'settings.gradle').exists()) {
+        include ":${it.name}"
+    }
+}

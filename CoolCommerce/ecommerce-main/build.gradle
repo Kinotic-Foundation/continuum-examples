@@ -1,0 +1,18 @@
+plugins {
+	id 'com.coolcompany.java-application-conventions'
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.hsqldb:hsqldb'
+
+	implementation 'com.flickr4java:flickr4java:3.0.6'
+}
