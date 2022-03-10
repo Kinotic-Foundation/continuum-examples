@@ -12,6 +12,7 @@ export interface IStoreService {
 
     getAllProductsForCategoryId(categoryId: number): Promise<Product[]>
 
+    getProduct(productId: number): Promise<Product>
 }
 
 /**
@@ -32,6 +33,10 @@ export class StoreService implements IStoreService {
 
     getAllProductsForCategoryId(categoryId: number): Promise<Product[]> {
         return this.serviceProxy.invoke('getAllProductsForCategoryId', [categoryId])
+    }
+
+    getProduct(productId: number): Promise<Product> {
+        return this.serviceProxy.invoke('getProduct', [productId])
     }
 
 }

@@ -1,4 +1,5 @@
 import Category from '@/domain/Category'
+import Image from '@/domain/Image'
 
 /**
  * Product information
@@ -13,11 +14,11 @@ export default class Product {
 
     public price!: number
 
-    public imageThumbnailUrl!: string
+    public rating!: number
 
-    public imageUrl!: string
+    public thumbnailImage: Image = new Image()
 
-    public sourceUrl!: string
+    public image: Image = new Image()
 
     public category!: Category
 

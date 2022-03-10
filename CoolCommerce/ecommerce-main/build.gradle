@@ -15,4 +15,6 @@ dependencies {
 	implementation 'org.hsqldb:hsqldb'
 
 	implementation 'com.flickr4java:flickr4java:3.0.6'
+
+	implementation 'org.codehaus.groovy:groovy-json'
 }

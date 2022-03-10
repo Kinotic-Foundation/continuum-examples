@@ -1,20 +1,5 @@
 <template>
   <v-app>
-    <v-navigation-drawer app clipped>
-
-      <v-list class="navigation-drawer__list">
-        <v-list-item v-for="category in categories"
-                     :key="category.id"
-                     :to="getLink(category)">
-
-          <v-list-item-content>
-            <v-list-item-title>{{category.name}}</v-list-item-title>
-          </v-list-item-content>
-
-        </v-list-item>
-      </v-list>
-
-    </v-navigation-drawer>
     <v-app-bar
       app
       clipped-left
@@ -27,9 +12,26 @@
       <v-spacer></v-spacer>
 
       <v-btn icon>
-        <v-icon>fa-cart-shopping</v-icon>
+        <v-badge
+            :content="storeState.cart.itemCount()"
+            overlap>
+        </v-badge>
+        <v-icon>mdi-cart</v-icon>
       </v-btn>
+
+      <template v-slot:extension>
+        <v-tabs background-color="white"
+                centered
+                light>
+          <v-tab v-for="category in storeState.categories"
+                 :key="category.id"
+                 :to="getLink(category)">{{category.name}}</v-tab>
+        </v-tabs>
+
+      </template>
+
     </v-app-bar>
+
 
     <v-main>
       <router-view/>
@@ -42,8 +44,9 @@ import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 import { inject } from 'inversify-props'
 import { IEventBus } from '@kinotic-foundation/continuum-js'
-import {IStoreService} from '@/services/StoreService'
+import {IStoreService} from '@/services/IStoreService'
 import Category from '@/domain/Category'
+import {IStoreState} from '@/states/IStoreState'
 
 
 @Component({
@@ -57,19 +60,20 @@ export default class App extends Vue {
   @inject()
   private storeService!: IStoreService
 
-  private categories: Category[] = []
+  @inject()
+  private storeState!: IStoreState
 
   private loading = false
 
   public async beforeMount() {
-    await this.eventBus.connect('ws://localhost:58503/v1', 'super', 'w3mak3th1sr0ck1nr0ll')
+    await this.eventBus.connect('ws://localhost:58503/v1', 'guest', 'guest')
   }
 
   public async mounted() {
     this.loading = true
 
     let data = await this.storeService.getAllCategories()
-    this.categories.push(...data)
+    this.storeState.categories.push(...data)
 
     this.loading = false
   }

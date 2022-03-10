@@ -1,37 +1,128 @@
 <template>
-    <v-container fluid>
-      <v-row dense>
-        <v-col
-            v-for="product in products"
-            :key="product.id"
-            :cols="3"
-        >
-          <v-card>
-            <v-img
-                :src="product.imageThumbnailUrl"
-                class="white--text align-end"
-                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                height="200px"
-            >
-              <v-card-title v-text="product.name"></v-card-title>
-            </v-img>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-
-              <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
-              </v-btn>
-
-              <v-btn icon>
-                <v-icon>mdi-bookmark</v-icon>
-              </v-btn>
-
-              <v-btn icon>
-                <v-icon>mdi-share-variant</v-icon>
-              </v-btn>
-            </v-card-actions>
+    <v-container class="pa-14" fluid>
+      <v-row>
+        <v-col cols="2" xs="12">
+          <v-card outlined>
+            <v-card-title>Categories</v-card-title>
+            <v-divider></v-divider>
+            <template>
+              <v-treeview :items="storeState.categories" dense></v-treeview>
+            </template>
+            <v-divider></v-divider>
+            <v-card-title>Price</v-card-title>
+<!--            <v-range-slider-->
+<!--                v-model="range"-->
+<!--                :max="max"-->
+<!--                :min="min"-->
+<!--                :height="10"-->
+<!--                class="align-center"-->
+<!--                dense-->
+<!--            ></v-range-slider>-->
+<!--            <v-row class="pa-2" dense>-->
+<!--              <v-col cols="12" sm="5">-->
+<!--                <v-text-field-->
+<!--                    :value="range[0]"-->
+<!--                    label="Min"-->
+<!--                    outlined-->
+<!--                    dense-->
+<!--                    @change="$set(range, 0, $event)"-->
+<!--                ></v-text-field>-->
+<!--              </v-col>-->
+<!--              <v-col cols="12" sm="2">-->
+<!--                <p class="pt-2 text-center">TO</p>-->
+<!--              </v-col>-->
+<!--              <v-col cols="12" sm="5">-->
+<!--                <v-text-field-->
+<!--                    :value="range[1]"-->
+<!--                    label="Max"-->
+<!--                    outlined-->
+<!--                    dense-->
+<!--                    @change="$set(range, 1, $event)"-->
+<!--                ></v-text-field>-->
+<!--              </v-col>-->
+<!--            </v-row>-->
+            <v-divider></v-divider>
+            <v-card-title class="pb-0">Customer Rating</v-card-title>
+            <v-container class="pt-0" fluid>
+              <v-checkbox append-icon="mdi-star" label="4 & above" hide-details dense></v-checkbox>
+              <v-checkbox append-icon="mdi-star" label="3 & above" hide-details dense></v-checkbox>
+              <v-checkbox append-icon="mdi-star" label="2 & above" hide-details dense></v-checkbox>
+              <v-checkbox append-icon="mdi-star" label="1 & above" hide-details dense></v-checkbox>
+            </v-container>
           </v-card>
+        </v-col>
+        <v-col cols="10" xs="12">
+          <v-row>
+            <v-col
+                v-for="product in products"
+                :key="product.id"
+                cols="3">
+              <v-hover v-slot:default="{ hover }">
+              <v-card width="300px">
+                <v-img
+                    :src="product.thumbnailImage.url"
+                    class="white--text align-end"
+                    height="200px">
+                  <v-expand-transition>
+                    <div
+                        v-if="hover"
+                        class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 white--text"
+                        style="height: 100%;">
+                      <v-btn v-if="hover" :to="'/product/' + product.id" class="" outlined>VIEW</v-btn>
+                    </div>
+
+                  </v-expand-transition>
+                  <v-card-title v-text="product.name"></v-card-title>
+                </v-img>
+                <v-card-actions class="ma-3">
+                  <span class="price">{{numeral(product.price).format('$0,0.00')}}</span>
+                  <v-spacer></v-spacer>
+                  <v-rating
+                      v-model="product.rating"
+                      background-color="orange lighten-3"
+                      color="orange"
+                      dense
+                      readonly
+                      half-increments
+                      size="18">
+                  </v-rating>
+                </v-card-actions>
+                <v-divider class="mx-3"></v-divider>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn icon
+                          v-bind="attrs"
+                          v-on="on"
+                          @click="addToCart(product)">
+                        <v-icon>mdi-cart</v-icon>
+                      </v-btn>
+                    </template>
+                    <span>Add to cart</span>
+                  </v-tooltip>
+
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn icon
+                             v-bind="attrs"
+                             v-on="on">
+                        <v-icon>mdi-heart</v-icon>
+                      </v-btn>
+                    </template>
+                    <span>Add to wishlist</span>
+                  </v-tooltip>
+
+                  <ShareDialogButton :link-text="'/product/' + product.id"></ShareDialogButton>
+
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+              </v-hover>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -40,24 +131,33 @@
 <script lang="ts">
 import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 import {inject} from 'inversify-props'
-import {IStoreService} from '@/services/StoreService'
+import {IStoreService} from '@/services/IStoreService'
 import Product from '@/domain/Product'
+import ShareDialogButton from '@/components/ShareDialogButton.vue'
+import numeral from 'numeral'
+import {IStoreState} from '@/states/IStoreState'
 
 @Component({
   components: {
+    ShareDialogButton
   },
 })
 export default class ProductListView extends Vue {
 
-  @Prop({type: String, required: false, default: null})
+  @Prop({type: String, required: true, default: null})
   public categoryId!: string
 
   @inject()
   private storeService!: IStoreService
 
+  @inject()
+  private storeState!: IStoreState
+
   private loading = false
 
   private products: Product[] = []
+
+  private numeral = numeral
 
   public async mounted() {
     await this.loadData(parseInt(this.categoryId))
@@ -77,6 +177,38 @@ export default class ProductListView extends Vue {
     this.loading = false
   }
 
+  private addToCart(product: Product){
+    this.storeState.cart.addProduct(product, 1)
+  }
+
+
 
 }
 </script>
+
+
+<style scoped>
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: .8;
+  position: absolute;
+  width: 100%;
+}
+
+.v-card__title {
+  word-break: break-word;
+}
+
+.price {
+  color: #f44336;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.breadcrumbs {
+  padding: 0;
+}
+
+</style>

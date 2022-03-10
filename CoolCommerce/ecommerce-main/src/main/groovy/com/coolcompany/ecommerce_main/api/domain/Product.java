@@ -15,15 +15,23 @@ public class Product {
 
     private String name;
 
+    @Column(length = 400)
     private String description;
 
     private float price;
 
-    private String imageThumbnailUrl;
+    private float rating;
 
-    private String imageUrl;
+    @AttributeOverrides({
+            @AttributeOverride(name = "width", column = @Column(name = "THUMB_WIDTH")),
+            @AttributeOverride(name = "height", column = @Column(name = "THUMB_HEIGHT")),
+            @AttributeOverride(name = "url", column = @Column(name = "THUMB_URL"))
+    })
+    @Embedded
+    private Image thumbnailImage;
 
-    private String sourceUrl;
+    @Embedded
+    private Image image;
 
     @ManyToOne
     private Category category;
@@ -64,30 +72,30 @@ public class Product {
         return this;
     }
 
-    public String getImageThumbnailUrl() {
-        return imageThumbnailUrl;
+    public float getRating() {
+        return rating;
     }
 
-    public Product setImageThumbnailUrl(String imageThumbnailUrl) {
-        this.imageThumbnailUrl = imageThumbnailUrl;
+    public Product setRating(float rating) {
+        this.rating = rating;
         return this;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public Image getThumbnailImage() {
+        return thumbnailImage;
     }
 
-    public Product setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public Product setThumbnailImage(Image thumbnailImage) {
+        this.thumbnailImage = thumbnailImage;
         return this;
     }
 
-    public String getSourceUrl() {
-        return sourceUrl;
+    public Image getImage() {
+        return image;
     }
 
-    public Product setSourceUrl(String sourceUrl) {
-        this.sourceUrl = sourceUrl;
+    public Product setImage(Image image) {
+        this.image = image;
         return this;
     }
 

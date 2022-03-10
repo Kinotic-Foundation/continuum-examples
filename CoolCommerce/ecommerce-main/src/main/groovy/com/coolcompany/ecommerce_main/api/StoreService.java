@@ -16,4 +16,6 @@ public interface StoreService {
 
     List<Product> getAllProductsForCategoryId(Long categoryId);
 
+    Product getProduct(Long productId);
+
 }
