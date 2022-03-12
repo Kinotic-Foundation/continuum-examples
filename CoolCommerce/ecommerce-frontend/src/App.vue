@@ -13,10 +13,24 @@
 
       <v-btn icon>
         <v-badge
-            :content="storeState.cart.itemCount()"
-            overlap>
+            v-if="storeState.cart.itemCount"
+            :content="storeState.cart.itemCount"
+            color="error"
+            dense
+            left>
         </v-badge>
         <v-icon>mdi-cart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-badge
+            v-if="storeState.wishlist.itemCount"
+            :content="storeState.wishlist.itemCount"
+            color="error"
+            dense
+            left>
+        </v-badge>
+        <v-icon>mdi-heart</v-icon>
       </v-btn>
 
       <template v-slot:extension>
@@ -83,7 +97,7 @@ export default class App extends Vue {
   }
 
   private getLink(category: Category): string{
-    return `/productList/${category.id}`
+    return `/category/${category.id}`
   }
 
 }

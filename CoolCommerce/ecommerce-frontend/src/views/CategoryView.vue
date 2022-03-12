@@ -6,7 +6,19 @@
             <v-card-title>Categories</v-card-title>
             <v-divider></v-divider>
             <template>
-              <v-treeview :items="storeState.categories" dense></v-treeview>
+              <v-list dense link>
+                <v-list-item-group
+                    color="primary">
+                  <v-list-item
+                      v-for="(item, i) in storeState.categories"
+                      :key="i"
+                      :to="'/category/' + item.id">
+                    <v-list-item-content>
+                      <v-list-item-title v-text="item.name"></v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
             </template>
             <v-divider></v-divider>
             <v-card-title>Price</v-card-title>
@@ -108,7 +120,9 @@
                     <template v-slot:activator="{ on, attrs }">
                       <v-btn icon
                              v-bind="attrs"
-                             v-on="on">
+                             v-on="on"
+                             :color="wishlistContainsProduct(product) ? 'error' : false"
+                             @click="addToWishlist(product)">
                         <v-icon>mdi-heart</v-icon>
                       </v-btn>
                     </template>
@@ -136,13 +150,14 @@ import Product from '@/domain/Product'
 import ShareDialogButton from '@/components/ShareDialogButton.vue'
 import numeral from 'numeral'
 import {IStoreState} from '@/states/IStoreState'
+import Category from '@/domain/Category'
 
 @Component({
   components: {
     ShareDialogButton
   },
 })
-export default class ProductListView extends Vue {
+export default class CategoryView extends Vue {
 
   @Prop({type: String, required: true, default: null})
   public categoryId!: string
@@ -178,10 +193,16 @@ export default class ProductListView extends Vue {
   }
 
   private addToCart(product: Product){
-    this.storeState.cart.addProduct(product, 1)
+    this.storeState.cart.addItem(product, 1)
   }
 
+  private addToWishlist(product: Product){
+    this.storeState.wishlist.toggleItem(product)
+  }
 
+  private wishlistContainsProduct(product: Product): boolean{
+    return this.storeState.wishlist.containsProduct(product)
+  }
 
 }
 </script>
@@ -205,10 +226,6 @@ export default class ProductListView extends Vue {
   color: #f44336;
   font-size: 16px;
   font-weight: 500;
-}
-
-.breadcrumbs {
-  padding: 0;
 }
 
 </style>

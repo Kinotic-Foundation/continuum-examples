@@ -1,14 +1,14 @@
 import { container, injectable } from 'inversify-props'
 import { reactive } from '@vue/composition-api'
 import Category from '@/domain/Category'
-import Product from '@/domain/Product'
-import {Cart} from '@/domain/Cart'
+import {Cart} from '@/states/Cart'
+import {Wishlist} from '@/states/Wishlist'
 
 export interface IStoreState {
 
     categories: Category[]
 
-    wishlist: Product[]
+    wishlist: Wishlist
 
     cart: Cart
 }
@@ -18,7 +18,7 @@ export class StoreState implements IStoreState{
 
     categories: Category[] = []
 
-    wishlist: Product[] = []
+    wishlist: Wishlist = reactive<Wishlist>(new Wishlist()) as Wishlist
 
     cart: Cart = reactive<Cart>(new Cart()) as Cart
 }

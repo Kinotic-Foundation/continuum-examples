@@ -45,8 +45,16 @@
               :value="1"
               dense>
           </v-text-field>
-          <v-btn class="primary white--text" outlined tile dense><v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
-          <v-btn class="ml-4" outlined tile>ADD TO WISHLIST</v-btn>
+          <v-btn class="primary white--text"
+                 outlined
+                 tile
+                 dense
+                 @click="addToCart(prod)">
+            <v-icon>mdi-cart</v-icon> ADD TO CART</v-btn>
+          <v-btn class="ml-4"
+                 outlined
+                 tile
+                 @click="addToWishlist(prod)">ADD TO WISHLIST</v-btn>
 
         </div>
       </v-col>
@@ -110,6 +118,7 @@ import Product from '@/domain/Product'
 import {inject} from 'inversify-props'
 import {IStoreService} from '@/services/IStoreService'
 import numeral from 'numeral'
+import {IStoreState} from '@/states/IStoreState'
 
 @Component({
              components: { }
@@ -122,6 +131,9 @@ export default class ProductView extends Vue {
   @inject()
   private storeService!: IStoreService
 
+  @inject()
+  private storeState!: IStoreState
+
   private prod: Product = new Product(0)
 
   private numeral = numeral
@@ -132,6 +144,14 @@ export default class ProductView extends Vue {
 
   public async mounted() {
     this.prod = await this.storeService.getProduct(parseInt(this.productId))
+  }
+
+  private addToCart(product: Product){
+    this.storeState.cart.addItem(product, 1)
+  }
+
+  private addToWishlist(product: Product){
+    this.storeState.wishlist.toggleItem(product)
   }
 
 }

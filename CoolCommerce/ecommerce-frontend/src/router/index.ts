@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import ProductListView from '@/views/ProductListView.vue'
+import CategoryView from '@/views/CategoryView.vue'
 import ProductView from '@/views/ProductView.vue'
 
 Vue.use(VueRouter)
@@ -11,9 +11,9 @@ const routes: Array<RouteConfig> = [
     redirect: '/productList/1'
   },
   {
-    path: '/productList/:categoryId',
+    path: '/category/:categoryId',
     props: true,
-    component: ProductListView
+    component: CategoryView
   },
   {
     path: '/product/:productId',
