@@ -7,7 +7,6 @@ import com.coolcompany.ecommerce_main.internal.repositories.CategoryRepository;
 import com.coolcompany.ecommerce_main.internal.repositories.ProductRepository;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -40,4 +39,5 @@ public class DefaultStoreService implements StoreService {
     public Product getProduct(Long productId) {
         return productRepository.findById(productId).orElse(null);
     }
+
 }

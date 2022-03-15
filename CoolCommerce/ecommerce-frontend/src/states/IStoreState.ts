@@ -18,13 +18,13 @@ export class StoreState implements IStoreState{
 
     categories: Category[] = []
 
-    wishlist: Wishlist = reactive<Wishlist>(new Wishlist()) as Wishlist
+    wishlist: Wishlist = new Wishlist()
 
-    cart: Cart = reactive<Cart>(new Cart()) as Cart
+    cart: Cart = new Cart()
 }
 
 container.addSingleton<IStoreState>(StoreState).onActivation((context, storeState) => {
-    // This line is what does the magic and makes the class a "state" object that vue can react too
+    // This line is what does the magic and makes the class a "state" object that vue can react to
     return reactive<IStoreState>(storeState) as IStoreState
 })
 

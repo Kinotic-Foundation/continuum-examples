@@ -11,7 +11,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
+      <v-btn to="/cart" icon>
         <v-badge
             v-if="storeState.cart.itemCount"
             :content="storeState.cart.itemCount"
@@ -22,7 +22,7 @@
         <v-icon>mdi-cart</v-icon>
       </v-btn>
 
-      <v-btn icon>
+      <v-btn to="/wishlist" icon>
         <v-badge
             v-if="storeState.wishlist.itemCount"
             :content="storeState.wishlist.itemCount"

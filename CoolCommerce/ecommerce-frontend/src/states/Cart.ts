@@ -12,19 +12,41 @@ export class Cart {
 
     private _total = 0.0
 
-    public get items(): IterableIterator<CartItem> {
-        return this.itemMap.values()
+    public get items(): CartItem[] {
+        return Array.from(this.itemMap.values())
     }
 
-    public addItem(product: Product, quantity: number): void{
+    public addItem(product: Product, quantity: number): void {
         let cartItem = this.itemMap.get(product.id)
         if(!cartItem){
             cartItem = new CartItem(product, quantity)
             this.itemMap.set(product.id, cartItem)
+        }else{
+            cartItem.addQuantity(quantity)
         }
-        cartItem.addQuantity(quantity)
         this._total += product.price * quantity
         this._itemCount += quantity
+    }
+
+    public decrementItem(product: Product, quantity: number): void {
+        const cartItem = this.itemMap.get(product.id)
+        if(cartItem){
+            cartItem.removeQuantity(quantity)
+            this._total -= product.price * quantity
+            this._itemCount -= quantity
+        }
+    }
+
+    public removeItem(product: Product): void {
+        const cartItem = this.itemMap.get(product.id)
+        if(cartItem){
+            this.itemMap.delete(product.id)
+            this._itemCount -= cartItem.quantity
+            this._total -= product.price * cartItem.quantity
+            if(isNaN(this._total)){
+                this._total = 0
+            }
+        }
     }
 
     get itemCount(): number {

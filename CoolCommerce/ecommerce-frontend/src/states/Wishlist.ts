@@ -1,5 +1,4 @@
 import Product from '@/domain/Product'
-import {CartItem} from '@/domain/CartItem'
 
 /**
  * Holds all data for the Wishlist
@@ -10,8 +9,8 @@ export class Wishlist{
 
     private _itemCount = 0
 
-    public get items(): IterableIterator<Product> {
-        return this.itemMap.values()
+    public get items(): Product[] {
+        return Array.from(this.itemMap.values())
     }
 
     public toggleItem(product: Product): void{

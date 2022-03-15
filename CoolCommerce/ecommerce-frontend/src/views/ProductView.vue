@@ -125,6 +125,8 @@ import {IStoreState} from '@/states/IStoreState'
            })
 export default class ProductView extends Vue {
 
+  private numeral = numeral
+
   @Prop({type: String, required: true, default: null})
   public productId!: string
 
@@ -135,8 +137,6 @@ export default class ProductView extends Vue {
   private storeState!: IStoreState
 
   private prod: Product = new Product(0)
-
-  private numeral = numeral
 
   constructor() {
     super()

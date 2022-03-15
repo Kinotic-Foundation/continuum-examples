@@ -17,6 +17,10 @@ export class CartItem {
         this._total = product.price * quantity
     }
 
+    public get thumbnail(): string {
+        return this._product.thumbnailImage.url
+    }
+
     public get product(): Product {
         return this._product
     }
@@ -32,6 +36,11 @@ export class CartItem {
 
     public addQuantity(value: number){
         this._quantity += value
+        this._total = this._product.price * this._quantity
+    }
+
+    public removeQuantity(value: number){
+        this._quantity -= value
         this._total = this._product.price * this._quantity
     }
 

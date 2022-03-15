@@ -1,75 +1,75 @@
 <template>
-    <v-container class="pa-14" fluid>
-      <v-row>
-        <v-col cols="2" xs="12">
-          <v-card outlined>
-            <v-card-title>Categories</v-card-title>
-            <v-divider></v-divider>
-            <template>
-              <v-list dense link>
-                <v-list-item-group
-                    color="primary">
-                  <v-list-item
-                      v-for="(item, i) in storeState.categories"
-                      :key="i"
-                      :to="'/category/' + item.id">
-                    <v-list-item-content>
-                      <v-list-item-title v-text="item.name"></v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list-item-group>
-              </v-list>
-            </template>
-            <v-divider></v-divider>
-            <v-card-title>Price</v-card-title>
-<!--            <v-range-slider-->
-<!--                v-model="range"-->
-<!--                :max="max"-->
-<!--                :min="min"-->
-<!--                :height="10"-->
-<!--                class="align-center"-->
-<!--                dense-->
-<!--            ></v-range-slider>-->
-<!--            <v-row class="pa-2" dense>-->
-<!--              <v-col cols="12" sm="5">-->
-<!--                <v-text-field-->
-<!--                    :value="range[0]"-->
-<!--                    label="Min"-->
-<!--                    outlined-->
-<!--                    dense-->
-<!--                    @change="$set(range, 0, $event)"-->
-<!--                ></v-text-field>-->
-<!--              </v-col>-->
-<!--              <v-col cols="12" sm="2">-->
-<!--                <p class="pt-2 text-center">TO</p>-->
-<!--              </v-col>-->
-<!--              <v-col cols="12" sm="5">-->
-<!--                <v-text-field-->
-<!--                    :value="range[1]"-->
-<!--                    label="Max"-->
-<!--                    outlined-->
-<!--                    dense-->
-<!--                    @change="$set(range, 1, $event)"-->
-<!--                ></v-text-field>-->
-<!--              </v-col>-->
-<!--            </v-row>-->
-            <v-divider></v-divider>
-            <v-card-title class="pb-0">Customer Rating</v-card-title>
-            <v-container class="pt-0" fluid>
-              <v-checkbox append-icon="mdi-star" label="4 & above" hide-details dense></v-checkbox>
-              <v-checkbox append-icon="mdi-star" label="3 & above" hide-details dense></v-checkbox>
-              <v-checkbox append-icon="mdi-star" label="2 & above" hide-details dense></v-checkbox>
-              <v-checkbox append-icon="mdi-star" label="1 & above" hide-details dense></v-checkbox>
-            </v-container>
-          </v-card>
-        </v-col>
-        <v-col cols="10" xs="12">
-          <v-row>
-            <v-col
-                v-for="product in products"
-                :key="product.id"
-                cols="3">
-              <v-hover v-slot:default="{ hover }">
+  <v-container class="pa-14" fluid>
+    <v-row>
+      <v-col cols="2" xs="12">
+        <v-card outlined>
+          <v-card-title>Categories</v-card-title>
+          <v-divider></v-divider>
+          <template>
+            <v-list dense link>
+              <v-list-item-group
+                  color="primary">
+                <v-list-item
+                    v-for="(item, i) in storeState.categories"
+                    :key="i"
+                    :to="'/category/' + item.id">
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.name"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </template>
+          <v-divider></v-divider>
+          <v-card-title>Price</v-card-title>
+          <v-range-slider
+              v-model="range"
+              :max="max"
+              :min="min"
+              :height="10"
+              class="align-center"
+              dense
+          ></v-range-slider>
+          <v-row class="pa-2" dense>
+            <v-col cols="12" sm="5">
+              <v-text-field
+                  :value="range[0]"
+                  label="Min"
+                  outlined
+                  dense
+                  @change="$set(range, 0, $event)"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="2">
+              <p class="pt-2 text-center">TO</p>
+            </v-col>
+            <v-col cols="12" sm="5">
+              <v-text-field
+                  :value="range[1]"
+                  label="Max"
+                  outlined
+                  dense
+                  @change="$set(range, 1, $event)"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-card-title class="pb-0">Customer Rating</v-card-title>
+          <v-container class="pt-0" fluid>
+            <v-checkbox append-icon="mdi-star" label="4 & above" hide-details dense></v-checkbox>
+            <v-checkbox append-icon="mdi-star" label="3 & above" hide-details dense></v-checkbox>
+            <v-checkbox append-icon="mdi-star" label="2 & above" hide-details dense></v-checkbox>
+            <v-checkbox append-icon="mdi-star" label="1 & above" hide-details dense></v-checkbox>
+          </v-container>
+        </v-card>
+      </v-col>
+      <v-col cols="10" xs="12">
+        <v-row>
+          <v-col
+              v-for="product in products"
+              :key="product.id"
+              cols="3">
+            <v-hover v-slot:default="{ hover }">
               <v-card width="300px">
                 <v-img
                     :src="product.thumbnailImage.url"
@@ -107,9 +107,9 @@
                   <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
                       <v-btn icon
-                          v-bind="attrs"
-                          v-on="on"
-                          @click="addToCart(product)">
+                             v-bind="attrs"
+                             v-on="on"
+                             @click="addToCart(product)">
                         <v-icon>mdi-cart</v-icon>
                       </v-btn>
                     </template>
@@ -121,7 +121,7 @@
                       <v-btn icon
                              v-bind="attrs"
                              v-on="on"
-                             :color="wishlistContainsProduct(product) ? 'error' : false"
+                             :class="[wishlistContainsProduct(product) ? 'selected' : '']"
                              @click="addToWishlist(product)">
                         <v-icon>mdi-heart</v-icon>
                       </v-btn>
@@ -134,12 +134,12 @@
                   <v-spacer></v-spacer>
                 </v-card-actions>
               </v-card>
-              </v-hover>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-    </v-container>
+            </v-hover>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -150,14 +150,15 @@ import Product from '@/domain/Product'
 import ShareDialogButton from '@/components/ShareDialogButton.vue'
 import numeral from 'numeral'
 import {IStoreState} from '@/states/IStoreState'
-import Category from '@/domain/Category'
 
 @Component({
-  components: {
-    ShareDialogButton
-  },
-})
+             components: {
+               ShareDialogButton
+             },
+           })
 export default class CategoryView extends Vue {
+
+  private numeral = numeral
 
   @Prop({type: String, required: true, default: null})
   public categoryId!: string
@@ -172,7 +173,9 @@ export default class CategoryView extends Vue {
 
   private products: Product[] = []
 
-  private numeral = numeral
+  private range = [0, 2000]
+  private min = 0
+  private max = 2000
 
   public async mounted() {
     await this.loadData(parseInt(this.categoryId))
@@ -226,6 +229,10 @@ export default class CategoryView extends Vue {
   color: #f44336;
   font-size: 16px;
   font-weight: 500;
+}
+
+.selected {
+  color: #ff5252 !important;
 }
 
 </style>
