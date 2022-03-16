@@ -6,6 +6,7 @@
           <v-data-table
               :headers="headers"
               :items="storeState.wishlist.items"
+              item-key="id"
               hide-default-footer>
             <template v-slot:[`item.thumbnailImage.url`]="{ item }">
               <v-img :src="item.thumbnailImage.url" height="100px" width="100px" contain></v-img>
@@ -80,6 +81,8 @@ export default class WishlistView extends Vue {
 
   removeFromWishlist(product: Product): void{
     this.storeState.wishlist.toggleItem(product)
+    // Big hammer.. I cannot for the life of me figure out why table was not being updated. I have the same logic for the cart page and this is not required. If anyone knows please open an issue? :)
+    this.$forceUpdate()
   }
 
 }

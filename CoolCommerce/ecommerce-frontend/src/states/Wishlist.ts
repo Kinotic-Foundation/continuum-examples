@@ -27,7 +27,7 @@ export class Wishlist{
         return this.itemMap.has(product.id)
     }
 
-    get itemCount(): number {
+    public get itemCount(): number {
         return this._itemCount
     }
 

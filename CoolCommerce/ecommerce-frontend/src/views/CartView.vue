@@ -6,6 +6,7 @@
           <v-data-table
               :headers="headers"
               :items="storeState.cart.items"
+              item-key="product.id"
               hide-default-footer>
             <template v-slot:[`item.thumbnail`]="{ item }">
               <v-img :src="item.thumbnail" height="100px" width="100px" contain></v-img>

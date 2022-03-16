@@ -49,7 +49,7 @@ export class Cart {
         }
     }
 
-    get itemCount(): number {
+    public get itemCount(): number {
         return this._itemCount
     }
 
