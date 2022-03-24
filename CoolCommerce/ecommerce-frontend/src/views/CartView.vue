@@ -51,7 +51,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <span class="text-subtitle-1">Total:&nbsp;</span><span class="price">{{numeral(storeState.cart.total).format('$0,0.00')}}</span>
-            <v-btn class="ml-6" color="primary">Checkout</v-btn>
+            <v-btn to="/checkout" class="ml-6" color="primary">Checkout</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

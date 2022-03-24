@@ -17,7 +17,7 @@
             </template>
 
             <template v-slot:[`item.delete`]="{ item }">
-              <v-btn icon
+              <v-btn iconcccccbcdlrujcvuciutneljnivvrrenhcjhrvkv
                      small
                      @click="removeFromWishlist(item)">
                 <v-icon>mdi-delete</v-icon>

@@ -4,6 +4,7 @@ import CategoryView from '@/views/CategoryView.vue'
 import ProductView from '@/views/ProductView.vue'
 import CartView from '@/views/CartView.vue'
 import WishlistView from '@/views/WishlistView.vue'
+import CheckoutView from '@/views/CheckoutView.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,10 @@ const routes: Array<RouteConfig> = [
   {
     path: '/cart',
     component: CartView
+  },
+  {
+    path: '/checkout',
+    component: CheckoutView
   },
   {
     path: '/wishlist',
