@@ -13,6 +13,7 @@
     "@types/numeral": "^2.0.2",
     "@vue/composition-api": "^1.4.9",
     "core-js": "^3.8.3",
+    "date-fns": "^2.28.0",
     "inversify": "5.0.5",
     "inversify-props": "1.4.9",
     "numeral": "^2.0.6",
