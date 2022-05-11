@@ -3,11 +3,25 @@ This is an example E-commerce application using the Continuum Framework. All the
 
 ### Projects
 * ecommerce-frontend
-  * Provides the UI 
+  * Provides the UI
 * ecommerce-gateway
   * Provides Continuum Gateway
-* ecommerce-main 
+* ecommerce-main
   * Provides the main store functionality
 * ecommerce-payment
   * Provides payment processing services
-  
+
+
+### Basic Setup
+* Install Docker Desktop.
+* Install SdkMan, which makes installing/managing Java and Gradle easy.  Also can manage multiple installed versions.
+  * `curl -s "https://get.sdkman.io" | bash`
+* Install Java 11
+  * `sdk install java 11.0.15.9.1-amzn`
+* Build Docker Compose images
+  * `./gradlew bootBuildImage`
+* Run Docker Compose.
+ * `docker-compose up -d`
+ * You should be able to see this in Docker Desktop Dashboard after fully booting.
+* You can now view the application by going here in a browser.
+  * http://localhost:9090/
