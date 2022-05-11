@@ -13,3 +13,8 @@ ext {
 dependencies {
 	implementation "com.kinotic:continuum-gateway:${continuumVersion}"
 }
+
+
+tasks.findByName('build').dependsOn ":ecommerce-frontend:build"
+
+tasks.findByName('bootBuildImage').dependsOn ":ecommerce-frontend:build"

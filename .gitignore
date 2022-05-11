@@ -14,3 +14,5 @@
 *.rar
 
 .gradle/
+
+CoolCommerce/ecommerce-gateway/src/main/resources/webroot/

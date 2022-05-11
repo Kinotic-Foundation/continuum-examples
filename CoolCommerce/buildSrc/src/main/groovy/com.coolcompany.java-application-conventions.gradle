@@ -20,7 +20,7 @@ configurations {
 
 ext {
 	set('groovy.version', "3.0.6")
-	continuumVersion="1.0-SNAPSHOT"
+	continuumVersion="1.0.0"
 }
 
 dependencies {
@@ -35,6 +35,9 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 }
 
+bootBuildImage {
+
+}
 
 /**
  * Default Environment Vars

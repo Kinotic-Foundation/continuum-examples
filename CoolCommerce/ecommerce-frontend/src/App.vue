@@ -80,7 +80,7 @@ export default class App extends Vue {
   private loading = false
 
   public async beforeMount() {
-    await this.eventBus.connect('ws://localhost:58503/v1', 'guest', 'guest')
+    await this.eventBus.connect('ws://127.0.0.1:58503/v1', 'guest', 'guest')
   }
 
   public async mounted() {
