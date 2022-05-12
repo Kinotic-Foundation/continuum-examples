@@ -1,14 +1,5 @@
 version: "3.9"
 services:
-  ecommerce-gateway:
-    image: ecommerce-gateway:0.1.0-SNAPSHOT
-    ports:
-      - "127.0.0.1:58503:58503"
-      - "127.0.0.1:58504:58504"
-      - "127.0.0.1:9090:9090"
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
-    restart: unless-stopped
   ecommerce-main:
     image: ecommerce-main:0.1.0-SNAPSHOT
     stdin_open: true
@@ -18,4 +9,13 @@ services:
     image: ecommerce-payment:0.1.0-SNAPSHOT
     stdin_open: true
     tty: true
+    restart: unless-stopped
+  ecommerce-gateway:
+    image: ecommerce-gateway:0.1.0-SNAPSHOT
+    ports:
+      - "127.0.0.1:58503:58503"
+      - "127.0.0.1:58504:58504"
+      - "127.0.0.1:9090:9090"
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
     restart: unless-stopped

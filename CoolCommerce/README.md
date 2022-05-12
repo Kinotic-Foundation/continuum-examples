@@ -18,10 +18,10 @@ This is an example E-commerce application using the Continuum Framework. All the
   * `curl -s "https://get.sdkman.io" | bash`
 * Install Java 11
   * `sdk install java 11.0.15.9.1-amzn`
-* Build Docker Compose images
+* Build Docker images (Get a cup of :coffee: this will take a while)
   * `./gradlew bootBuildImage`
 * Run Docker Compose.
  * `docker-compose up -d`
  * You should be able to see this in Docker Desktop Dashboard after fully booting.
-* You can now view the application by going here in a browser.
-  * http://localhost:9090/
+* You can now view the application by going here in a browser. (This may not be available for at least a minute while the backend services finish starting.)
+  * [http://localhost:9090/](http://localhost:9090/)
