@@ -18,7 +18,7 @@ This is an example E-commerce application using the Continuum Framework. All the
   * `curl -s "https://get.sdkman.io" | bash`
 * Install Java 11
   * `sdk install java 11.0.15.9.1-amzn`
-* Build Docker images (Get a cup of :coffee: this will take a while)
+* Build Docker images (Get a cup of :coffee: this will take 10 minutes or so..)
   * `./gradlew bootBuildImage`
 * Run Docker Compose.
  * `docker-compose up -d`
