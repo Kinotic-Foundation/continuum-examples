@@ -12,6 +12,9 @@ services:
     restart: unless-stopped
   ecommerce-gateway:
     image: ecommerce-gateway:0.1.0-SNAPSHOT
+    depends_on:
+      - "ecommerce-main"
+      - "ecommerce-payment"
     ports:
       - "127.0.0.1:58503:58503"
       - "127.0.0.1:58504:58504"
