@@ -2,7 +2,7 @@ package com.coolcompany.ecommerce_main.api;
 
 import com.coolcompany.ecommerce_main.api.domain.Category;
 import com.coolcompany.ecommerce_main.api.domain.Product;
-import com.kinotic.continuum.api.annotations.Publish;
+import org.kinotic.continuum.api.annotations.Publish;
 
 import java.util.List;
 

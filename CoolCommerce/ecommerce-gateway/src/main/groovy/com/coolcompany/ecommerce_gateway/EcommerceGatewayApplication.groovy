@@ -1,7 +1,7 @@
 package com.coolcompany.ecommerce_gateway
 
-import com.kinotic.continuum.api.annotations.EnableContinuum
-import com.kinotic.continuum.gateway.api.annotations.EnableContinuumGateway
+import org.kinotic.continuum.api.annotations.EnableContinuum
+import org.kinotic.continuum.gateway.api.annotations.EnableContinuumGateway
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 

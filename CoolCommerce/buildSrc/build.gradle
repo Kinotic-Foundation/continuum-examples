@@ -12,8 +12,8 @@ repositories {
 
 
 dependencies {
-    implementation 'org.springframework.boot:org.springframework.boot.gradle.plugin:2.6.7'
+    implementation 'org.springframework.boot:org.springframework.boot.gradle.plugin:2.7.5'
 
     // see https://docs.spring.io/dependency-management-plugin/docs/current-SNAPSHOT/reference/html5/
-    implementation "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
+    implementation "io.spring.gradle:dependency-management-plugin:1.0.15.RELEASE"
 }

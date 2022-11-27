@@ -12,13 +12,13 @@ repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
     maven {
-      url "https://s01.oss.sonatype.org/content/repositories/snapshots"
+      url "https://repo1.maven.org/maven2"
     }
 }
 
 dependencyManagement {
     imports {
-        mavenBom 'org.springframework.boot:spring-boot-dependencies:2.6.7'
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:2.7.5'
     }
     dependencies {
         dependency 'com.h2database:h2:1.4.197' // We override the version provided by Spring to be compatible with Ignite which is used by Continuum

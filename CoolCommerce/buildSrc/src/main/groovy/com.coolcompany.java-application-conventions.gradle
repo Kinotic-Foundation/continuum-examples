@@ -19,16 +19,16 @@ configurations {
 
 
 ext {
-	set('groovy.version', "3.0.6")
-	continuumVersion="1.0.0"
+	set('groovy.version', "3.0.10")
+	continuumVersion="1.0.1"
 }
 
 dependencies {
 	implementation 'org.codehaus.groovy:groovy'
 	implementation 'org.springframework.boot:spring-boot-starter'
 
-	implementation "com.kinotic:continuum-core:${continuumVersion}"
-	implementation "com.kinotic:continuum-core-vertx:${continuumVersion}"
+	implementation "org.kinotic:continuum-core:${continuumVersion}"
+	implementation "org.kinotic:continuum-core-vertx:${continuumVersion}"
 
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
