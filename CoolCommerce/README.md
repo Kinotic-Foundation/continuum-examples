@@ -13,15 +13,15 @@ This is an example E-commerce application using the Continuum Framework. All the
 
 
 ### Basic Setup
-* Install Docker Desktop.
-* Install SdkMan, which makes installing/managing Java and Gradle easy.  Also can manage multiple installed versions.
-  * `curl -s "https://get.sdkman.io" | bash`
-* Install Java 11
-  * `sdk install java 11.0.15.9.1-amzn`
-* Build Docker images (Get a cup of :coffee: this could take a bit the first time, depending on your internet connection.)
-  * `./gradlew bootBuildImage`
-* Run Docker Compose.
- * `docker-compose up -d`
- * You should be able to see this in Docker Desktop Dashboard after fully booting.
-* You can now view the application by going here in a browser. (This may not be available for at least a minute while the backend services finish starting.)
-  * [http://localhost:9090/](http://localhost:9090/)
+1. Install Docker Desktop.
+2. Install SdkMan, which makes installing/managing Java and Gradle easy.  Also can manage multiple installed versions.
+   1. `curl -s "https://get.sdkman.io" | bash`
+3. Install Java 11
+   1. `sdk install java 11.0.17-zulu`
+4. Build the Docker images (Get a cup of :coffee: this could take a bit the first time, depending on your internet connection.)
+   1. `./gradlew bootBuildImage`
+5. Run Docker Compose.
+   1. `docker-compose up -d` (You should see the application listed under containers in docker desktop)
+6. You can now view the application by going [here](http://localhost:9090/) in a browser. (This may not be available for at least a minute while the backend services finish starting.)
+   1. [http://localhost:9090/](http://localhost:9090/)
+ 
