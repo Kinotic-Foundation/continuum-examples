@@ -5,6 +5,7 @@ plugins {
 	id 'org.springframework.boot'
 	id 'groovy'
 	id 'application'
+	id 'io.freefair.lombok'
 }
 
 configurations {
@@ -19,8 +20,7 @@ configurations {
 
 
 ext {
-	set('groovy.version', "3.0.10")
-	continuumVersion="1.0.1"
+	set('groovy.version', "${groovyVersion}")
 }
 
 dependencies {

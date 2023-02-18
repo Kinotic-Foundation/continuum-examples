@@ -1,8 +1,10 @@
 package com.coolcompany.ecommerce_main.api;
 
 import com.coolcompany.ecommerce_main.api.domain.Category;
+import com.coolcompany.ecommerce_main.api.domain.CheckoutInfo;
 import com.coolcompany.ecommerce_main.api.domain.Product;
 import org.kinotic.continuum.api.annotations.Publish;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -17,5 +19,7 @@ public interface StoreService {
     List<Product> getAllProductsForCategoryId(Long categoryId);
 
     Product getProduct(Long productId);
+
+    Mono<Void> checkout(CheckoutInfo checkoutInfo);
 
 }

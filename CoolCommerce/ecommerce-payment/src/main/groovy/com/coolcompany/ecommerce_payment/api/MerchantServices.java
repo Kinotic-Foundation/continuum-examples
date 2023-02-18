@@ -1,6 +1,7 @@
 package com.coolcompany.ecommerce_payment.api;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
@@ -9,6 +10,6 @@ import java.util.UUID;
  */
 public interface MerchantServices {
 
-    Flux<UUID> processPayment();
+    Mono<UUID> processPayment();
 
 }

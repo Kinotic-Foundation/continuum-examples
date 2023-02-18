@@ -2,10 +2,6 @@ plugins {
 	id 'com.coolcompany.java-application-conventions'
 }
 
-repositories {
-	mavenCentral()
-}
-
 ext {
 
 }

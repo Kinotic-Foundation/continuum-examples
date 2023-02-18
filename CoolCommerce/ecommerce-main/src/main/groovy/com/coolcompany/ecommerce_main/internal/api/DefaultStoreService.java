@@ -2,10 +2,12 @@ package com.coolcompany.ecommerce_main.internal.api;
 
 import com.coolcompany.ecommerce_main.api.StoreService;
 import com.coolcompany.ecommerce_main.api.domain.Category;
+import com.coolcompany.ecommerce_main.api.domain.CheckoutInfo;
 import com.coolcompany.ecommerce_main.api.domain.Product;
 import com.coolcompany.ecommerce_main.internal.repositories.CategoryRepository;
 import com.coolcompany.ecommerce_main.internal.repositories.ProductRepository;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -40,4 +42,8 @@ public class DefaultStoreService implements StoreService {
         return productRepository.findById(productId).orElse(null);
     }
 
+    @Override
+    public Mono<Void> checkout(CheckoutInfo checkoutInfo) {
+        return null;
+    }
 }
