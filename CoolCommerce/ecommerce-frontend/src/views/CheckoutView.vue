@@ -304,7 +304,7 @@ export default class CheckoutView extends Vue {
 
   private customerInfoValid = false
   private paymentInfoValid = false
-  private step = 3
+  private step = 1
 
   private requiredRules: RuleValidator[] = [
     v => !!v || 'Field is required'
