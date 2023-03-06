@@ -1,8 +1,12 @@
 # General properties shared by all profiles
+continuum-gateway:
+  disableIam: true
+
 continuum:
   discovery: multicast
 
 logging:
   level:
     com:
-      kinotic: INFO
+      kinotic: TRACE
+

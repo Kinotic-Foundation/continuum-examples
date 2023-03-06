@@ -56,4 +56,14 @@ export class Cart {
     public get total(): number {
         return this._total
     }
+
+    public get cartItems(): CartItem[] {
+        return Array.from(this.itemMap.values())
+    }
+
+    public emptyCart(): void {
+        this.itemMap = new Map()
+        this._itemCount = 0
+        this._total = 0
+    }
 }

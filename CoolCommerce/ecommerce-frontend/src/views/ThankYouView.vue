@@ -7,7 +7,12 @@
           <v-divider></v-divider>
           <v-card-text>
             <p>
-              Your order has been placed and will be processed shortly. You will receive an email confirmation shortly.
+              Your order has been placed and will be processed shortly.
+            </p>
+            <p>
+              You will receive an email confirmation shortly.
+            </p>
+            <p>
               Here is your confirmation number: <b>{{confirmationId}}</b>
             </p>
           </v-card-text>

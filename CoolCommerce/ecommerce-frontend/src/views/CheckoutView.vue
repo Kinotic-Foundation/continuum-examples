@@ -273,7 +273,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import {inject} from 'inversify-props'
 import {IStoreService} from '@/services/IStoreService'
 import {IStoreState} from '@/states/IStoreState'
@@ -281,6 +281,7 @@ import numeral from 'numeral'
 import {CheckoutInfo} from '@/domain/CheckoutInfo'
 import { enUS } from 'date-fns/locale'
 import getYear from 'date-fns/getYear'
+import { toRaw } from '@vue/composition-api'
 
 // Function that takes an input value as an argument and return either true / false or a string with an error message
 type RuleValidator = (value: any) => string | boolean
@@ -332,7 +333,17 @@ export default class CheckoutView extends Vue {
   }
 
   private async checkout() {
+    this.info.cartItems = []
+    // we have to do this because cart item has fields named with _ and uses getter and setters that do not work with JSON.stringify
+    for(let item of this.storeState.cart.cartItems){
+      this.info.cartItems.push({
+                                 product: item.product,
+                                 quantity: item.quantity,
+                                 total: item.total
+                               })
+    }
     const confirmationId = await this.storeService.checkout(this.info)
+    this.storeState.cart.emptyCart()
     await this.$router.replace({path: `/thank_you/${confirmationId}`})
   }
 

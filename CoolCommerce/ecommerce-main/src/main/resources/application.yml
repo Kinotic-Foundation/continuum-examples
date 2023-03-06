@@ -1,6 +1,6 @@
 # General properties shared by all profiles
 continuum:
-  discovery: sharedfs
+  discovery: multicast
 
 spring:
   datasource:
