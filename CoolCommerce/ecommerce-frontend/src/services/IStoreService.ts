@@ -15,7 +15,7 @@ export interface IStoreService {
 
     getProduct(productId: number): Promise<Product>
 
-    checkout(checkoutInfo: CheckoutInfo): Promise<String>
+    checkout(checkoutInfo: CheckoutInfo): Promise<string>
 }
 
 /**
