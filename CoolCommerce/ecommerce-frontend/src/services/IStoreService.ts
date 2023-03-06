@@ -42,7 +42,7 @@ export class StoreService implements IStoreService {
         return this.serviceProxy.invoke('getProduct', [productId])
     }
 
-    checkout(checkoutInfo: CheckoutInfo): Promise<String> {
+    checkout(checkoutInfo: CheckoutInfo): Promise<string> {
         return this.serviceProxy.invoke('checkout', [checkoutInfo])
     }
 
