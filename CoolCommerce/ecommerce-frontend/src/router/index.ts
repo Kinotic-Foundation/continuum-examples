@@ -5,6 +5,7 @@ import ProductView from '@/views/ProductView.vue'
 import CartView from '@/views/CartView.vue'
 import WishlistView from '@/views/WishlistView.vue'
 import CheckoutView from '@/views/CheckoutView.vue'
+import ThankYouView from "@/views/ThankYouView.vue";
 
 Vue.use(VueRouter)
 
@@ -34,7 +35,12 @@ const routes: Array<RouteConfig> = [
   {
     path: '/wishlist',
     component: WishlistView
-  }
+  },
+  {
+    path: '/thank_you/:confirmationId',
+    props: true,
+    component: ThankYouView
+  },
 ]
 
 const router = new VueRouter({

@@ -1,0 +1,11 @@
+plugins {
+	id 'com.coolcompany.java-library-conventions'
+}
+
+ext {
+
+}
+
+dependencies {
+
+}

@@ -1,0 +1,18 @@
+# General properties shared by all profiles
+continuum:
+  discovery: sharedfs
+
+spring:
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: "jdbc:hsqldb:mem:cool_commerce_db;DB_CLOSE_DELAY=-1"
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    com:
+      kinotic: INFO

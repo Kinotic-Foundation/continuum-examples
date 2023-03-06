@@ -1,4 +1,4 @@
-package com.coolcompany.ecommerce_main.api.domain;
+package com.coolcompany.ecommerce_payment.api.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

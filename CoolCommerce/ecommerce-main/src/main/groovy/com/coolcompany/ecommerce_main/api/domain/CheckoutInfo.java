@@ -1,5 +1,7 @@
 package com.coolcompany.ecommerce_main.api.domain;
 
+import com.coolcompany.ecommerce_payment.api.domain.CustomerInfo;
+import com.coolcompany.ecommerce_payment.api.domain.PaymentInfo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

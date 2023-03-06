@@ -8,4 +8,6 @@ ext {
 
 dependencies {
 
+	implementation project(':ecommerce-payment-api')
+
 }

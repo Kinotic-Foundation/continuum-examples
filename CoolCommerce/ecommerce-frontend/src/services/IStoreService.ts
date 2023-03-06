@@ -2,6 +2,7 @@ import { IServiceRegistry, IServiceProxy } from '@kinotic-foundation/continuum-j
 import { inject, injectable, container } from 'inversify-props'
 import Category from '@/domain/Category'
 import Product from '@/domain/Product'
+import { CheckoutInfo } from '@/domain/CheckoutInfo'
 
 /**
  * Provides functionality to access store information
@@ -13,6 +14,8 @@ export interface IStoreService {
     getAllProductsForCategoryId(categoryId: number): Promise<Product[]>
 
     getProduct(productId: number): Promise<Product>
+
+    checkout(checkoutInfo: CheckoutInfo): Promise<String>
 }
 
 /**
@@ -37,6 +40,10 @@ export class StoreService implements IStoreService {
 
     getProduct(productId: number): Promise<Product> {
         return this.serviceProxy.invoke('getProduct', [productId])
+    }
+
+    checkout(checkoutInfo: CheckoutInfo): Promise<String> {
+        return this.serviceProxy.invoke('checkout', [checkoutInfo])
     }
 
 }

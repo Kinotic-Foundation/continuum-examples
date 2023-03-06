@@ -1,0 +1,8 @@
+# General properties shared by all profiles
+continuum:
+  discovery: sharedfs
+
+logging:
+  level:
+    com:
+      kinotic: INFO

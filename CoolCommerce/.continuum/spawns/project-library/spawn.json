@@ -1,13 +1,12 @@
 {
   "propertySchema":{
+    "groupId": {
+      "type": "string",
+      "description": "Maven Group Id"
+    },
     "artifactId": {
       "type": "string",
       "description": "Maven Artifact Id"
-    },
-    "name": {
-      "type": "string",
-      "description": "Microservice Name",
-      "default": "{{artifactId | camelCase | upperFirst}}"
     },
     "basePackage": {
       "type": "string",

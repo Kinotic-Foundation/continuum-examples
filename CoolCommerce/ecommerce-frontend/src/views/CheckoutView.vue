@@ -257,7 +257,7 @@
               <v-btn
                   color="primary"
                   :disabled="!paymentInfoValid"
-                  @click="step = 1">
+                  @click="checkout">
                 Continue
               </v-btn>
 
@@ -329,6 +329,11 @@ export default class CheckoutView extends Vue {
     for(let i = year; i < year + 10; i++){
       this.years.push(i)
     }
+  }
+
+  private async checkout() {
+    const confirmationId = await this.storeService.checkout(this.info)
+    await this.$router.replace({path: `/thank_you/${confirmationId}`})
   }
 
 }
