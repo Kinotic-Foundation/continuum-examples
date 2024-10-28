@@ -1,6 +1,7 @@
 package com.coolcompany.ecommerce_main.api.domain;
 
-import javax.persistence.*;
+
+import jakarta.persistence.*;
 
 /**
  * Created by Navíd Mitchell 🤪 on 3/2/22.

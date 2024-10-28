@@ -1,7 +1,5 @@
 rootProject.name = 'CoolCommerce'
 
-includeBuild('/Users/navid/workspace/git/continuum/continuum-framework')
-
 rootDir.listFiles().each {
     if (it.directory && new File(it, 'settings.gradle').exists()) {
         include ":${it.name}"

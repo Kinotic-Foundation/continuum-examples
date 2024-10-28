@@ -2,9 +2,6 @@
 continuum-gateway:
   disableIam: true
 
-continuum:
-  discovery: multicast
-
 logging:
   level:
     com:

@@ -3,7 +3,6 @@ plugins {
     id "com.github.node-gradle.node" version "3.2.1"
 }
 
-
 node {
     // Whether to download and install a specific Node.js version or not
     // If false, it will use the globally installed Node.js

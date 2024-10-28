@@ -6,10 +6,10 @@ import com.coolcompany.ecommerce_main.internal.repositories.CategoryRepository;
 import com.coolcompany.ecommerce_main.internal.repositories.ProductRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import jakarta.annotation.PostConstruct;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,6 +1,6 @@
 package com.coolcompany.ecommerce_main.api.domain;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 import java.net.URL;
 
 /**

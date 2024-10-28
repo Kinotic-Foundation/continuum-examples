@@ -1,6 +1,4 @@
 # General properties shared by all profiles
-continuum:
-  discovery: multicast
 
 spring:
   datasource:

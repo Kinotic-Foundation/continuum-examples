@@ -10,7 +10,4 @@ dependencies {
 	implementation "org.kinotic:continuum-gateway:${continuumVersion}"
 }
 
-
-tasks.findByName('build').dependsOn ":ecommerce-frontend:build"
-
-tasks.findByName('bootBuildImage').dependsOn ":ecommerce-frontend:build"
+tasks.findByName('processResources').dependsOn ":ecommerce-frontend:copyDist"

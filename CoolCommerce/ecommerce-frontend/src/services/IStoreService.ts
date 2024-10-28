@@ -1,5 +1,5 @@
-import { IServiceRegistry, IServiceProxy } from '@kinotic-foundation/continuum-js'
-import { inject, injectable, container } from 'inversify-props'
+import {IServiceProxy, Continuum} from '@kinotic/continuum-client'
+import { injectable, container } from 'inversify-props'
 import Category from '@/domain/Category'
 import Product from '@/domain/Product'
 import { CheckoutInfo } from '@/domain/CheckoutInfo'
@@ -26,8 +26,8 @@ export class StoreService implements IStoreService {
 
     protected serviceProxy: IServiceProxy
 
-    constructor(@inject() serviceRegistry: IServiceRegistry) {
-        this.serviceProxy = serviceRegistry.serviceProxy('com.coolcompany.ecommerce-main.api.StoreService')
+    constructor() {
+        this.serviceProxy = Continuum.serviceProxy('com.coolcompany.ecommerce-main.api.StoreService')
     }
 
     getAllCategories(): Promise<Category[]> {

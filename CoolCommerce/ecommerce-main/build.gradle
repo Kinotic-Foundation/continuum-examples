@@ -14,5 +14,5 @@ dependencies {
 
 	implementation 'com.flickr4java:flickr4java:3.0.6'
 
-	implementation 'org.codehaus.groovy:groovy-json'
+	implementation 'org.apache.groovy:groovy-json'
 }

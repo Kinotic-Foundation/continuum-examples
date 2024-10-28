@@ -57,19 +57,16 @@
 import Vue from 'vue'
 import { Component } from 'vue-property-decorator'
 import { inject } from 'inversify-props'
-import { IEventBus } from '@kinotic-foundation/continuum-js'
+import {Continuum} from '@kinotic/continuum-client'
 import {IStoreService} from '@/services/IStoreService'
 import Category from '@/domain/Category'
 import {IStoreState} from '@/states/IStoreState'
-
+import {ConnectionInfo} from '@kinotic/continuum-client'
 
 @Component({
              components: { }
            })
 export default class App extends Vue {
-
-  @inject()
-  public eventBus!: IEventBus
 
   @inject()
   private storeService!: IStoreService
@@ -80,7 +77,15 @@ export default class App extends Vue {
   private loading = false
 
   public async beforeMount() {
-    await this.eventBus.connect('ws://127.0.0.1:58503/v1', 'guest', 'guest')
+      const connectionInfo: ConnectionInfo = {
+          host: '127.0.0.1',
+          port: 58503,
+          connectHeaders:{
+              login: 'guest',
+              passcode: 'guest'
+          }
+      }
+    await Continuum.connect(connectionInfo)
   }
 
   public async mounted() {
@@ -92,8 +97,8 @@ export default class App extends Vue {
     this.loading = false
   }
 
-  public beforeDestroy() {
-    this.eventBus.disconnect()
+  public async beforeDestroy() {
+    await Continuum.disconnect()
   }
 
   private getLink(category: Category): string{
