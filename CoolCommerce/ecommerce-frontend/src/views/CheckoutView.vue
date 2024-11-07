@@ -275,13 +275,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import {inject} from 'inversify-props'
-import {IStoreService} from '@/services/IStoreService'
+import {STORE_SERVICE} from '@/services/IStoreService'
 import {IStoreState} from '@/states/IStoreState'
 import numeral from 'numeral'
 import {CheckoutInfo} from '@/domain/CheckoutInfo'
 import { enUS } from 'date-fns/locale'
 import getYear from 'date-fns/getYear'
-import { toRaw } from '@vue/composition-api'
 
 // Function that takes an input value as an argument and return either true / false or a string with an error message
 type RuleValidator = (value: any) => string | boolean
@@ -294,9 +293,6 @@ type Month = {value: number, text: string}
 export default class CheckoutView extends Vue {
 
   private numeral = numeral
-
-  @inject()
-  private storeService!: IStoreService
 
   @inject()
   private storeState!: IStoreState
@@ -342,7 +338,7 @@ export default class CheckoutView extends Vue {
                                  total: item.total
                                })
     }
-    const confirmationId = await this.storeService.checkout(this.info)
+    const confirmationId = await STORE_SERVICE.checkout(this.info)
     this.storeState.cart.emptyCart()
     await this.$router.replace({path: `/thank_you/${confirmationId}`})
   }

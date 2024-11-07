@@ -116,7 +116,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Product from '@/domain/Product'
 import {inject} from 'inversify-props'
-import {IStoreService} from '@/services/IStoreService'
+import {STORE_SERVICE} from '@/services/IStoreService'
 import numeral from 'numeral'
 import {IStoreState} from '@/states/IStoreState'
 
@@ -131,9 +131,6 @@ export default class ProductView extends Vue {
   public productId!: string
 
   @inject()
-  private storeService!: IStoreService
-
-  @inject()
   private storeState!: IStoreState
 
   private prod: Product = new Product(0)
@@ -143,7 +140,7 @@ export default class ProductView extends Vue {
   }
 
   public async mounted() {
-    this.prod = await this.storeService.getProduct(parseInt(this.productId))
+    this.prod = await STORE_SERVICE.getProduct(parseInt(this.productId))
   }
 
   private addToCart(product: Product){

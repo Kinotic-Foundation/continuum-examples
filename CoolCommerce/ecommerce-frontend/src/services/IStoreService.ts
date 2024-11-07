@@ -1,5 +1,4 @@
 import {IServiceProxy, Continuum} from '@kinotic/continuum-client'
-import { injectable, container } from 'inversify-props'
 import Category from '@/domain/Category'
 import Product from '@/domain/Product'
 import { CheckoutInfo } from '@/domain/CheckoutInfo'
@@ -21,7 +20,6 @@ export interface IStoreService {
 /**
  * Default implementation of IStoreService
  */
-@injectable()
 export class StoreService implements IStoreService {
 
     protected serviceProxy: IServiceProxy
@@ -48,4 +46,4 @@ export class StoreService implements IStoreService {
 
 }
 
-container.addSingleton<IStoreService>(StoreService)
+export const STORE_SERVICE: IStoreService = new StoreService()

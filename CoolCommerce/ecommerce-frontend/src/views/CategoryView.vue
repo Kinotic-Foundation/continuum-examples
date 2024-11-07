@@ -145,7 +145,7 @@
 <script lang="ts">
 import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
 import {inject} from 'inversify-props'
-import {IStoreService} from '@/services/IStoreService'
+import {STORE_SERVICE} from '@/services/IStoreService'
 import Product from '@/domain/Product'
 import ShareDialogButton from '@/components/ShareDialogButton.vue'
 import numeral from 'numeral'
@@ -162,9 +162,6 @@ export default class CategoryView extends Vue {
 
   @Prop({type: String, required: true, default: null})
   public categoryId!: string
-
-  @inject()
-  private storeService!: IStoreService
 
   @inject()
   private storeState!: IStoreState
@@ -189,7 +186,7 @@ export default class CategoryView extends Vue {
   private async loadData(categoryId: number){
     this.loading = true
     this.products.splice(0, this.products.length)
-    let data = await this.storeService.getAllProductsForCategoryId(parseInt(this.categoryId))
+    let data = await STORE_SERVICE.getAllProductsForCategoryId(parseInt(this.categoryId))
     this.products.push(...data)
 
     this.loading = false
