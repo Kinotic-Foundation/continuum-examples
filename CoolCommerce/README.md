@@ -16,8 +16,8 @@ This is an example E-commerce application using the Continuum Framework. All the
 1. Install Docker Desktop.
 2. Install SdkMan, which makes installing/managing Java and Gradle easy.  Also can manage multiple installed versions.
    1. `curl -s "https://get.sdkman.io" | bash`
-3. Install Java 11
-   1. `sdk install java 11.0.17-zulu`
+3. Install Java 21
+   1. `sdk install java 21`
 4. Build the Docker images (Get a cup of :coffee: this could take a bit the first time, depending on your internet connection.)
    1. `./gradlew bootBuildImage`
 5. Run Docker Compose.

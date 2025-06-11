@@ -186,6 +186,7 @@ export default class CategoryView extends Vue {
   private async loadData(categoryId: number){
     this.loading = true
     this.products.splice(0, this.products.length)
+    console.log(`Loading Data for Category Id: ${this.categoryId}`)
     let data = await STORE_SERVICE.getAllProductsForCategoryId(parseInt(this.categoryId))
     this.products.push(...data)
 

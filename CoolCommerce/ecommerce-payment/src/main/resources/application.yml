@@ -1,6 +1,12 @@
 # General properties shared by all profiles
 
+continuum:
+  debug: true
+  maxNumberOfCoresToUse: 4
+
 logging:
   level:
-    com:
-      kinotic: INFO
+    org:
+      kinotic: TRACE
+    io:
+      vertx: DEBUG

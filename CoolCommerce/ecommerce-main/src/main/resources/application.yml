@@ -10,7 +10,13 @@ spring:
     hibernate:
       ddl-auto: update
 
+continuum:
+  debug: true
+  maxNumberOfCoresToUse: 4
+
 logging:
   level:
-    com:
-      kinotic: INFO
+    org:
+      kinotic: TRACE
+    io:
+      vertx: DEBUG

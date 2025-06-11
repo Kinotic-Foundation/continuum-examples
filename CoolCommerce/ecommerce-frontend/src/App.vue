@@ -71,29 +71,25 @@ export default class App extends Vue {
     @inject()
     private storeState!: IStoreState
 
-    private loading = false
+    public async mounted() {
 
-    public async beforeMount() {
         const connectionInfo: ConnectionInfo = {
-            host: '127.0.0.1',
-            port: 58503,
-            connectHeaders:{
-                login: 'guest',
-                passcode: 'guest'
-            }
+          host: '127.0.0.1',
+          port: 58503,
+          connectHeaders:{
+            login: 'guest',
+            passcode: 'guest'
+          }
         }
         const connectedInfo = await Continuum.connect(connectionInfo)
         console.log('Connected')
         console.dir(connectedInfo)
-    }
 
-    public async mounted() {
-        this.loading = true
-
+        console.log('Loading Categories')
         let data = await STORE_SERVICE.getAllCategories()
         this.storeState.categories.push(...data)
+        console.log(`number of categories: ${this.storeState.categories.length}`)
 
-        this.loading = false
     }
 
     public async beforeDestroy() {

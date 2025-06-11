@@ -2,8 +2,13 @@
 continuum-gateway:
   disableIam: true
 
+continuum:
+  debug: true
+  maxNumberOfCoresToUse: 4
+
 logging:
   level:
-    com:
+    org:
       kinotic: TRACE
-
+    io:
+      vertx: DEBUG
